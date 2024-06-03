@@ -35,6 +35,7 @@ pub struct Config {
 pub struct ServerConfig {
     address: String,
     port: String,
+    cors_permissive: bool,
 }
 
 pub fn get_server_address_config() -> String {
@@ -43,6 +44,10 @@ pub fn get_server_address_config() -> String {
 
 pub fn get_server_port_config() -> String {
     get_config().server.port.clone()
+}
+
+pub fn get_server_cors_config() -> bool {
+    get_config().server.cors_permissive.clone()
 }
 
 fn get_config() -> &'static Config {
@@ -54,6 +59,7 @@ fn default_config() -> Config {
         server: ServerConfig {
             address: String::from("127.0.0.1"),
             port: String::from("7001"),
+            cors_permissive: false,
         },
     }
 }

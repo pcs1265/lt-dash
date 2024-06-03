@@ -1,6 +1,7 @@
 {
   "server": {
     "address": "127.0.0.1",
-    "port": "7001"
+    "port": "7001",
+    "cors_permissive": true
   }
 }
