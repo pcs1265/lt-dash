@@ -3,5 +3,9 @@
     "address": "127.0.0.1",
     "port": "7001",
     "cors_permissive": true
+  },
+  "auth": {
+    "enabled": true,
+    "key": "QFIiCecVAH0Jnp9dYOrv3HSeCI6Zo4AKGFrt/iC6oBYzmcpLWjZ3D6vceSKl8K5d"
   }
 }

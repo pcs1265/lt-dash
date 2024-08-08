@@ -5,14 +5,13 @@ use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 use crate::config::{get_server_address_config, get_server_cors_config, get_server_port_config};
 
+mod auth;
 mod config;
 mod route;
 
 #[tokio::main]
 async fn main() {
-    tracing_subscriber::registry()
-        .with(tracing_subscriber::fmt::layer())
-        .init();
+    tracing_subscriber::fmt().init();
 
     info!(r#"LT-DASH started"#);
 

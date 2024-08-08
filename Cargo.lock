@@ -946,6 +946,7 @@ dependencies = [
  "ntapi",
  "once_cell",
  "rayon",
+ "serde",
  "windows",
 ]
 

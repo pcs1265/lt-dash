@@ -14,6 +14,8 @@ use futures::{
     stream::{SplitSink, SplitStream},
     SinkExt, StreamExt,
 };
+use serde_json::json;
+use sysinfo::System;
 use tracing::info;
 
 pub fn get_router() -> Router {
@@ -41,11 +43,19 @@ async fn websocket(stream: WebSocket) {
 }
 
 async fn ws_sender(mut sender: SplitSink<WebSocket, Message>) {
+    let mut system = System::new_all();
     loop {
-        sleep(Duration::from_secs(1));
+        sleep(Duration::from_millis(100));
+
+        system.refresh_cpu();
         let date = Local::now();
         let v = date.format("%Y-%m-%d %H:%M:%S.%f");
-        if sender.send(format!("{}", v).into()).await.is_err() {
+
+        if sender
+            .send(format!("{}", json!(system)).into())
+            .await
+            .is_err()
+        {
             break;
         }
     }
